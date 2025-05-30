@@ -15,7 +15,7 @@ def bo_ssl_pool(str_model, str_target, X, by, X_pool, seed, gamma=None, num_subs
         indices_pool = np.logical_and(indices_pool, ~np.all(X_pool == bx, axis=1))
     X_pool_ = X_pool[indices_pool]
 
-    X, by, labels, weights, val_to_split, labels_original = datasets.get_dataset(X, by)
+    labels, weights, val_to_split, labels_original = datasets.get_dataset(X, by)
     assert np.all(labels == labels_original)
 
     num_subset = np.minimum(num_subset, X_pool_.shape[0])

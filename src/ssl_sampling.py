@@ -14,7 +14,7 @@ def bo_ssl_sampling(str_model, bounds, seed, ind_iter, X, by, info_sampling, gam
     method_sampling, num_sampling, num_test = utils_sampling.get_info_sampling(info_sampling)
     X_tran, X_test = utils_sampling.get_samples(bounds, method_sampling, num_sampling, seed, ind_iter, num_test=num_test, X=X)
 
-    X, by, labels, weights, val_to_split, labels_original = datasets.get_dataset(X, by)
+    labels, weights, val_to_split, labels_original = datasets.get_dataset(X, by)
     assert np.all(labels == labels_original)
 
     # gaussian_0 and uniform_0 works, but sobol_0 and halton_0 do not work.
