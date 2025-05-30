@@ -3,7 +3,7 @@ import torch
 from torch.utils.data import Dataset
 
 
-def get_dataset(X, by, use_weights, gamma=0.33):
+def get_dataset(X, by, gamma=0.33):
     try:
         val_to_split = np.quantile(by, gamma, method='nearest')
     except:
@@ -11,44 +11,7 @@ def get_dataset(X, by, use_weights, gamma=0.33):
     labels = (by <= val_to_split).astype(float)
     labels_original = labels
 
-    if not use_weights:
-        X = X
-        by = by
-
-        weights = np.ones_like(by)
-    else:
-        bool_1 = labels == 1
-
-        X_1 = X[bool_1]
-        by_1 = by[bool_1]
-        labels_1 = labels[bool_1]
-
-        X_0 = X
-        by_0 = by
-        labels_0 = np.zeros_like(labels)
-
-        bw_1 = (val_to_split - by)[bool_1]
-        if np.mean(bw_1) > 0.0:
-            bw_1 = bw_1 / np.mean(bw_1)
-        else:
-            # it will be a uniform distribution.
-            assert np.all(bw_1 == 0.0)
-            bw_1 += 1e-12
-            bw_1 = bw_1 / np.mean(bw_1)
-        bw_0 = 1.0 - labels_0
-
-        print(X.shape, X_1.shape, by_1.shape, labels_1.shape)
-
-        X = np.concatenate([X_1, X_0], axis=0)
-        by = np.concatenate([by_1, by_0], axis=0)
-        labels = np.concatenate([labels_1, labels_0], axis=0)
-        print(X.shape, by.shape, labels.shape)
-
-        s_1 = X_1.shape[0]
-        s_0 = X_0.shape[0]
-
-        weights = np.concatenate([bw_1 * (s_1 + s_0) / s_1, bw_0 * (s_1 + s_0) / s_0], axis=0)
-        weights = weights / np.mean(weights)
+    weights = np.ones_like(by)
 
     return X, by, labels, weights, val_to_split, labels_original
 
