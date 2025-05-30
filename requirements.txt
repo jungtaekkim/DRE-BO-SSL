@@ -1,0 +1,6 @@
+numpy
+scipy
+scikit-learn
+bayeso
+bayeso_benchmarks
+nats_bench
