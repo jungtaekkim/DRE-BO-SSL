@@ -4,8 +4,7 @@ It is the official implementation of "[Density Ratio Estimation-based Bayesian O
 
 ## Required Packages
 
-The packages required for this project are described in `requirements.txt` except for `torch`.
-You should install `torch` directly.
+The packages required for this project are described in `requirements.txt`.
 
 You may need to install `nas_benchmarks` and `nasbench` in order to run experiments with `Tabular Benchmarks`.
 However, installing these packages can be tricky due to their dependencies on outdated Python packages.
@@ -23,8 +22,8 @@ source script_run_bo_pool.sh
 You may follow the detailed settings described in our paper by modifying the arguments given for Python scripts.
 
 For your information, we would like to provide the detailed dependencies of this project.
-We have tested our experiments excluding `Tabular Benchmarks` on `Python 3.13`, `bayeso 0.6.0`, `bayeso-benchmarks 0.2.0`, `nats-bench 1.8`, `numpy 2.2.6`, `scikit-learn 1.6.1`, `scipy 1.15.3`, and `torch 2.7.0`.
-The experiments of `Tabular Benchmarks` are tested on `Python 3.7`, `bayeso 0.6.0`, `bayeso-benchmarks 0.2.0`, `nats-bench 1.8`, `numpy 1.21.6`, `tensorflow 1.15.0`, `scikit-learn 1.0.2`, `scipy 1.7.3`, and `torch 1.13.1`; please see below for why `Tabular Benchmarks` is differently tested.
+We have tested our experiments excluding `Tabular Benchmarks` on `Python 3.13`, `bayeso 0.6.0`, `bayeso-benchmarks 0.2.0`, `nats-bench 1.8`, `numpy 2.2.6`, `scikit-learn 1.6.1`, and `scipy 1.15.3`.
+The experiments of `Tabular Benchmarks` are tested on `Python 3.7`, `bayeso 0.6.0`, `bayeso-benchmarks 0.2.0`, `nats-bench 1.8`, `numpy 1.21.6`, `tensorflow 1.15.0`, `scikit-learn 1.0.2`, and `scipy 1.7.3`; please see below for why `Tabular Benchmarks` is differently tested.
 
 ### Tabular Benchmarks
 
